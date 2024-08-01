@@ -36,7 +36,7 @@ echo $_SERVER['PHP_SELF'];
 'QUERY\_STRING'
 > A query string, se houver, pela qual a página foi acessada.
 
-[Entre outros...](https://php.net/manual/pt_BR/reserved.variablas.server.php)
+[Entre outros...](https://www.php.net/manual/pt_BR/language.variables.superglobals.php)
 
 
 
