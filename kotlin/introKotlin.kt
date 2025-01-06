@@ -139,11 +139,6 @@ fun main() {
     setMutavel.remove(12)
 	println("Removendo o item adicionado ${setMutavel}")  
     
-    //tornor o conjuto mutável com um casting
-      
-    val setMutavelAgoraImutavel: Set<Int> = setMutavel
-    println("")
-    
     // Maps são conjunto de itens indexados por uma chave-valor, e para acessar o item, podemos passar sua chave como referencia entre []
     // Se tentar acessar uma chave-valor inexistente no map, recebemos um retorno null
     // Cada chave deve ser única para que o kotlin consiga encontrar a referência
@@ -223,10 +218,204 @@ fun main() {
     println("")
     
     
+    val lista: List<Int> = listOf(10,5,3,2,4,1,7,9,8,6)
+    println(lista)
+    // Acessa valores pelo indice 
+    println(lista[4])
+    
+    val listaSet: Set<Int> = setOf(10,5,3,2,4,1,7,9,8,6)
+    println(listaSet)
+    // Não usa indice ou chaves para acessar os valores
+    
+    val listaMap: Map<Int, Int> = mapOf(10 to 1,5 to 2,3 to 3,2 to 4,4 to 5,1 to 6,7 to 7,9 to 8,8 to 9,6 to 10)
+    println(listaMap)
+    // Acessa valores pelas chaves
+    println(listaMap[10])
+    println("")
+    println("")
+   
+   // 
+   
+   
+   // Fluxo de controle
+   // Como em qualquer linguagem de programação, em kotlin também temos as expressões condicionais e loops
+   
+   // EXPRESSÃO CONDICIONAL
+   
+   // if
+   
+    val n1: Int = 2
+    val n2: Int = 3
+    
+    if (n1 == n2) {
+        println("Iguais")
+    } else {
+        println("Não iguais")
+    }
+       
+    // Não usamos ternários em kotlin, se houver uma única linha de teste, podemos usar assim:
+    
+    println(if (n1 < n2) n1 else n2)
+    println("")
+    println("")
+    
+   // when
+   
+   // Recomendado no caso de multiplas expressões, aninhamentos
+   // Usamos o when dessa forma:
+   
+    val obj = "Hello"
+    
+    when (obj) {
+        // checando o valor de when
+        "1" -> println("Um")
+        "Hello" -> println ("Ótimo")
+        else -> println("Nenhuma opção")
+        
+        // as verificações são feitas em sequência
+    }
+    
+    // When ainda pode ser atribuido a uma variável
+    
+    val resultado = when (obj) {
+        "1" -> "Um"
+        "Hello" -> "Ótimo"
+        else -> "Nenhuma opção"
+    }
+    
+    println(resultado)
+    
+    // usando o when sem uma variável de controle
+    
+    val luzDeSemaforo = "red"
+    val acaoDoCarro = when {
+        luzDeSemaforo == "verde" -> "Pode ir"
+        luzDeSemaforo == "amarelo" -> "Atenção"
+        luzDeSemaforo == "red" -> "Pare"
+        else -> "Não está funcionando"
+    }
+    
+    println(acaoDoCarro)
+   
+   // Mas a forma mais recomendada é com uso de uma variável de controle
+    
+    val luzDeSemaforo1 = "vermelho"
+    val acaoDoCarro1 = when (luzDeSemaforo1) {
+        "verde" -> "Pode ir"
+        "amarelo" -> "Atenção"
+        "vermelho" -> "Pare"
+        else -> "Não está funcionando"
+    }
+    
+    println(acaoDoCarro1)
+    println("")
+    println("")
+    
+ 
+    // RANGES -> intervalo para loops com interação
+    
+    // Usamos o operador '..' para criar um intervalo em Kotlin 1..4 é a mesma coisa que 1,2,3,4
+    // Podemos não incluir o valor final com o operador ..< por exemplo 1..<4 é a mesma coisa que 1,2,3
+    // Podemos mudar a ordem do intervalo com downTo. por exemplo 4 donwTo 1 é a mesma coisa que 4,3,2,1,
+    // Podemos ja definir o valor de incremento da iteração com step, ao inves de 1 vamos incrementar de 2
+    	// veja o exemplo 1..5 step 2: 1,3,5
+        // 1..10 step 3 = 1,3,5,7,9
+        
+    // Podemos fazer com caracteres:
+    // 'a' .. 'd' = 'a','b','c','d'
+    // 'z' donwTo 's' = 'z','y','x','w','v','u','t','s'
+    // 'z' donwTo 's' step 2 = 'z','x','v','t'
     
     
+    //LOOPS
+    
+    // for
+    
+    for (number in 1..10) {
+        print("$number,")
+    }
+    println("")
+    
+    // PODEMOS ITERAR EM CIMA DAS COLOEÇÔES USANDO LOOPS
+    
+    val bolos = listOf("Cenoura", "Queijo", "Chocolate");
+    for (bolo in bolos) {
+        println ("Oba, temos um Bolo de $bolo")
+    }
+    println("")
+    
+    //while
+    
+    var n = 0
+    while (n < 10) {
+        print(n)
+        n++
+    }
+    println("")
     
     
+    // DO-WHILE
+    
+    
+    var num = 0
+    do {
+		println(num)
+        num++
+    } while (num < 10) 
+    
+    // EXERCICIOS
+    /*
+     * Escreva um programa que simule o jogo Fizz buzz. Sua tarefa é imprimir números de 1 a 100 incrementalmente, 
+     * substituindo qualquer número divisível por três pela palavra "fizz", 
+     * e qualquer número divisível por cinco pela palavra "buzz".
+     * Qualquer número divisível por 3 e 5 deve ser substituído pela palavra "fizzbuzz".
+     * */
+    
+    for (i in 1..100) {
+        when {
+            i % 3 == 0 && i % 5 == 0 -> print("(fizzbuzz), ")
+            i % 3 == 0 -> print("(fizz), ")
+            i % 5 == 0 -> print("(buzz), ")
+            else -> print("$i, ")
+        }
+    }
+    
+    println("")
+    println("")
+    
+    
+    /*
+     * Você tem uma lista de palavras. Use for e if para imprimir somente as palavras que começam com a letra l.
+     * */
+     
+     val words = listOf("dinosaur", "limousine", "magazine", "language")
+     
+     for (word in words) {
+         if (word.startsWith("l")){ 
+             println(word)
+         }
+     }
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
 }
