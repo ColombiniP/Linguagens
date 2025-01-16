@@ -1,3 +1,4 @@
+import kotlin.math.PI
 /**
  * You can edit, run, and share this code.
  * play.kotlinlang.org
@@ -395,6 +396,182 @@ fun main() {
              println(word)
          }
      }
+    
+
+     val lista = listOf(1,2,3,4,5)
+    for((indice,valor) in lista.withIndex()) {/*println("Índice: $indice valor:$valor")*/}
+	println("")
+    var x = 0
+    while(x < 10) {
+        //println(x.toString())
+        x++
+    }
+    
+    
+        // FUNÇÕES
+
+    // Definimos funções como um conjunto de código agrupado em um bloco
+    // Para definir uma função usamos a palavra 'fun' seguida do nome da função
+
+    fun soma(a: Int, b: Int) : Int 
+    {
+        return a + b
+    }
+
+    println(soma(4,5))
+    
+    // Podemos ter funções sem retorno, e para isso usamos o tipo : Unit
+    // Como é uma função sem retorno, podemos omitir o tipo Unit, e o kotlin faz a inferência
+    
+    fun dizOi() : Unit
+    {
+        println("Olá, mundo!")
+    }
+    
+    dizOi()
+    
+    // Single-Expression functions (Funções de expressões únicas) quando há apenas 1 linha, não precisa de chaves
+    
+    fun plus(num1: Int, num2: Int) = num1 + num2
+    println(plus(234,342))
+    
+    fun sayHello() = println("Hello, world!") 
+    sayHello()
+    
+    // E em expressões de linha única não tem a necessidade da palavra return ou tipar o retorno
+
+    /*
+        Usando a palavra return no corpo da função, faz com que o a verificação seja interropida
+    */
+
+
+    val nomeDeUsuarios = mutableListOf("usuario1","usuario2","usuario3")
+    fun cadastroDeUsuario(nomeDeUsuario:String): String {
+        if (nomeDeUsuario in nomeDeUsuarios) {
+            return "Usuário já cadastrado"
+        } else {
+            println("Digite o usuário")
+        }
+    }
+
+
+    /**
+    * EXERCICIOS
+
+        1 Escreva uma função chamada circleArea que recebe 
+        o raio de um círculo em formato inteiro como parâmetro e gera a área desse círculo.
+        FORMULA a = PI*r²
+    */
+
+    fun circleArea(r:Int) : Double {
+        var r = r * 2
+        return PI * r
+    }
+
+    fun circleAreaSEF(radius:Int) = PI * radius * radius
+
+    println(circleArea(2))
+    println(circleAreaSEF(2))
+
+
+/*
+ * Você tem uma função que traduz um intervalo de tempo dado em horas, minutos e segundos em segundos.
+ * Na maioria dos casos, você precisa passar apenas um ou dois parâmetros de função, enquanto o restante é igual a 0.
+ * Melhore a função e o código que a chama usando valores de parâmetros padrão e argumentos nomeados para que o código seja mais fácil de ler.
+ * */
+
+fun intervalInSeconds(hours: Int = 0, minutes: Int = 0, seconds: Int = 0) = ((hours * 60) + minutes) * 60 + seconds
+
+fun main() {
+    println(intervalInSeconds(1, 20, 15))
+    println(intervalInSeconds(minutes =  1, seconds = 25))
+    println(intervalInSeconds(hours = 2))
+    println(intervalInSeconds(minutes = 10))
+    println(intervalInSeconds(hours = 1, seconds = 1))
+
+}
+
+    
+    // ORIENTAÇãO a OBJETOS
+    // Kotlin é uma linguagem orientada a obejetos, além de ter o paradigma funcional.
+    // Podemos definir programação orientada a objetos a um modelo baseado em objetos.
+    // OBJETO -> é uma 'abstração' de algo do mundo real ou não
+    // Um objeto tem propriedades -> caracteristicas e tem métodos -> o que ele faz (ação)
+    
+    open class Carro {
+        var nome: String = ""
+        var marca: String = ""
+        var cor: String = ""
+        var ano: Int = 0
+        
+        fun andar() {
+            println("Carro em movimento")
+        }
+        
+        fun parar() {
+            println("Carro parou")
+        }
+    }
+    
+    // A classe carro é um molde, e dessa classe classe podemos instanciar vários obejtos
+    
+    val c3 = Carro() // Esse é a forma de instancia a classe carro, e criamos o objeto c3
+    c3.ano = 2010
+    c3.cor = "Prata"
+    c3.marca = "Citroen"
+    c3.nome = "Citroen C3"
+    
+    println(c3.nome)
+    c3.andar()
+    c3.parar()
+    println("")
+    
+    val civic = Carro()
+    civic.cor = "Preto"
+    civic.nome = "Honda Civic"
+    civic.marca = "Honda"
+    civic.ano = 2020
+    
+    println(civic.nome)
+    civic.andar()
+    civic.parar()
+    println("")
+    
+    // Em POO temos alguns conceitos que chamamamos de pilares (HERANÇA) (ENCAPSULAMENTO) (POLIMORFISMO) (ABSTRAÇÃO)
+    
+    /* HERANÇA
+     é a habilidade de herdar caracteristicas de uma outra classe, evita reescrita de código
+     criamos a classe que vai receber a herança e tipamos com a classe que possue as caracteristicas
+     a classe 'pai' precisa permitir explicitamente que a classe 'filha' herde com a palavra 'open' antes da palavra class
+    */
+    
+    class CarroEspecial : Carro() {
+        
+        fun fazerDrift() {
+            println("Cavalo de pau")
+        }
+        
+    }
+    
+    val tunado = CarroEspecial()
+    
+    // tunado.marca("Nissan")
+    // tunado.ano(1998)
+    // tunado.nome("Nissan Skiline GT")
+    // tunado.cor("fucsia metalico")
+    
+    // println(tunado.nome)
+    tunado.andar()
+    tunado.fazerDrift()
+   
+   
+   /*
+    * Em kotlin temos uma classe de dados, usada para armazenar propriedade e não tem uma função, como um usuário que tem nome, senha, email ...
+    * ótima para mater a organização.
+    * Usamos a palavra 'data' antes da palavra class, além de poder ser feita em 1 linha
+    * */
+    
+    data class Usuario(var nome:String, var email:String, var senha:String)
     
     
 
