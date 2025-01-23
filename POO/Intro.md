@@ -144,3 +144,210 @@ public class SomaValores {
     }
 
 }
+```
+
+Exemplo de aplicação
+```java
+package classeA;
+
+public class ClasseA {
+	
+	public String x = "teste";
+	public double y;
+	
+	public void metodo01(int a, int b) {
+		System.out.println(a + ":" + b);
+	}
+	
+	public int metodo02(String s) {
+		x = s;
+		int a = 4;
+		return a;
+	}
+	
+	public String metodo03(String z) {
+		String s = x + z;
+		System.out.println(s);
+	}
+	
+}
+
+/**
+ * QUAL FOI O ERRO ENCONTRADO?
+ * 
+ * NO METODO03 FALTOU O RETORNO DO VALOR
+ * 
+ * 
+ * */
+```
+
+variáveis e estrutura de controle e organização do projeto
+
+estrutura de controle são as estruturas vinculadas à lógica de programação
+
+### Tipos de variáveis
+
+as variáveis são espaços reservados na memória e possuem um tipo, um nome e um valor
+
+sintaxe das variáveis locais
+
+tipoDaVariavel nomeDaVariavel;
+Ou
+tipoDaVariavel nomeDaVariavel = valorDaVariavel;
+
+>variáveis locais não possuem modificadores na sua declaração
+
+Os tipos são
+
+- Númericos inteiros
+
+    - byte
+    - short
+    - int
+    - long
+
+- Numéricos reais (de ponto flutuante)
+
+    - float
+    - double
+
+- Lógicos
+
+    - boolean
+
+- Alfanumérico
+
+    - char -> seu valor literal é usado entre aspas simples 
+        - char a = 'c';
+
+Esses são os tipos primitivos, no java o tipo String é um objeto, que possui diverssos métodos complementares
+
+String str = new String();-> na forma de classe
+
+String str = "Esta é uma String..."; -> na forma de um tipo primitivo
+
+O valor atribuido ao tipo String é entre aspas duplas
+
+### Estrutura condiciona
+
+Em java temos 2 estruturas condicionais
+
+if - else if - else
+switch - case
+
+- estrutura IF
+
+![alt text](image-1.png)
+
+- estrutura SWITCH
+
+```java
+int a = 10;
+
+switch(a) {
+    case 2: 
+        System.out.println("A é = 2");
+        break;
+    case 5: 
+        System.out.println("A é = 5");
+        break;
+    case 10: 
+        System.out.println("A é = 10");
+        break;
+    default:
+        System.out.println("Nenhuma delas";
+        break;
+}
+```
+
+### Estrutura de repetição
+
+- For
+
+```java
+
+for (int i = 0; i < 10; i++) {
+    System.out.println(i);
+}
+
+```
+
+A estrutura for é útil para trabalhar com matrizes(Arrays)
+
+Em java Array é uma variáve que pode conter mais de um valor, desde que seja do mesmo tipo
+sintaxe
+
+tipoArray[] var = new tipoArray[tamanho]
+
+Os valores em arrays são organizados por indices, e sempre começa a contagem em 0
+
+Exemplo
+
+```java
+int[] a = new int[3];
+a[0] = 1;
+a[1] = 2;
+a[2] = 3;
+System.out.println(a[1]); // 2
+
+// é possível gerar um array com essa sintaxe também
+
+double[] b = {1.2, 2.3, 3.4, 4.5};
+
+// Usando o for para iterar sobre os arrays
+
+for(int i = 0; i < a.length; i++) {
+    System.out.println(i);
+}
+
+for(int i = 0; i < b.length; i++) {
+    System.out.println(i);
+}
+
+```
+
+- While
+
+Uma estrutura de repetição controlado por uma condição, será executada enquanto a condição seja verdadeira
+
+```java
+int a = 0;
+while(a<10) {
+    System.out.println(a);
+    a++;
+}
+```
+
+- Do While
+
+Diferente do while, o do executa o comando primeiro e depois testa a condição, e repete até que a condição se torne falsa
+
+```java
+int a = 10;
+do {
+    System.out.println(a);
+    a--;
+} while(a > 0);
+```
+
+### Packages (pacotes)
+
+Packages são pacotes(categorias que separam as classes)
+
+por exemplo,
+```java
+package model;
+
+// é um diretório model que fica na raiz do projeto
+
+package com.mysql.jdbc;
+
+// é um diretório com/mysql/jdbc (três diretórios) que fica na raiz do projeto java
+```
+
+Se formos utilizar uma classe em outra classe que estamos usando, é necessário importar o pacote ou a biblioteca usamos a palavra
+
+```java
+import nome.do.pacote.Classe.
+```
+
